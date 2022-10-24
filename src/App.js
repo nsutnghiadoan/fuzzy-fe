@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react';
+import { FaTemperatureLow } from 'react-icons/fa'
+import ToolTips from './components/ToolTips';
+import { humidity } from './components/listData';
 
 function App() {
+  const [listParam, setListParam] = useState({
+    humidity: '',
+    temperature : '',
+    radiation : '',
+  })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ToolTips 
+        icon={<FaTemperatureLow className='icon_weather' size={'30'} />} 
+        parentState={listParam}
+        listData={humidity}
+        setListParam={setListParam}
+      />
+      {/* <ToolTips icon={<FaTemperatureLow className='icon_weather' size={'30'} />} parentState={listParam} /> */}
     </div>
   );
 }
