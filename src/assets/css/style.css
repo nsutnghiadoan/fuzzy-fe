@@ -1,4 +1,9 @@
 #moisture {
   display: block;
   width: 400px;
+}
+
+#chart {
+  display: block;
+  height: 400px !important;
 }/*# sourceMappingURL=style.css.map */

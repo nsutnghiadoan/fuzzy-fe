@@ -1,50 +1,49 @@
 import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-export default function Chart(props) {
-  const data = [
-    {
-      name: 'Page C',
-      Wet: 0,
-      Dry: 9800,
-      Medium: 2290,
-    },
-    {
-      name: 'Page D',
-      Wet: 2780,
-      Dry: 3908,
-      Medium: 2000,
-    },
-    {
-      name: 'Page E',
-      Wet: 1890,
-      Dry: 4800,
-      Medium: 2181,
-    },
-  ];
-  return (
-    <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          layout="vertical"
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
+const series = [
+  {
+    name: 'Series 1',
+    data: [
+      { category: 0, value: 1 },
+      { category: 20, value: 1 },
+      { category: 30, value: 0 },
+    ],
+  },
+  {
+    name: 'Series 2',
+    data: [
+      { category: 15, value: 0 },
+      { category: 40, value: 1 },
+      { category: 65, value: 0 },
+    ],
+  },
+  {
+    name: 'Series 3',
+    data: [
+      { category: 50, value: 0 },
+      { category: 60, value: 1 },
+      { category: 100, value: 1 },
+    ],
+  },
+];
+
+export default class Example extends PureComponent {
+
+  render() {
+    return (
+      <ResponsiveContainer id={'chart'} width="100%" height="100%">
+        <LineChart width={500} height={300}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis type="number" />
-          <YAxis type="category" />
+          <XAxis dataKey="category" type="number" />
+          <YAxis dataKey="value" />
           <Tooltip />
           <Legend />
-          <Line dataKey="Dry" stroke="#8884d8" />
-          <Line dataKey="Wet" stroke="#82ca9d" />
-          <Line dataKey="Medium" stroke="#82ca9d" />
+          {series.map((s) => (
+            <Line dataKey="value" data={s.data} name={s.name} key={s.name} />
+          ))}
         </LineChart>
       </ResponsiveContainer>
-  )
+    );
+  }
 }
