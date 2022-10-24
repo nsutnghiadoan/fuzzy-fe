@@ -17,15 +17,13 @@ export default function ToolTips( props ) {
     const handleTooltipClose = () => {
         setOpen(false);
     };
-    const labelState = props.listData.index;
-    console.log(props.parentState);
     return (
         <div>
             <ClickAwayListener onClickAway={handleTooltipClose}>
                 <div>
                     <Tooltip
                         PopperProps={{
-                        disablePortal: true,
+                            disablePortal: true,
                         }}
                         onClose={handleTooltipClose}
                         open={open}
@@ -39,13 +37,12 @@ export default function ToolTips( props ) {
                             <Select
                             value={age}
                             onChange={(event)=>{
-                                console.log(props.listData.index);
+                                props.parentState[props.listData.index] = event.target.value;
                                 setAge(event.target.value);
-                                props.setListParam();
                             }}
                             displayEmpty
                             label='radiation'
-                            defaultValue='hi'
+                            defaultValue={props.listData.index}
                             inputProps={{ 'aria-label': 'Without label' }}
                             >
                             {props.listData.data.map((value, index)=>{

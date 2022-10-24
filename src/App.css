@@ -1,0 +1,14 @@
+@-webkit-keyframes rotateIcon {
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+@keyframes rotateIcon {
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+.icon_weather {
+  -webkit-animation: rotateIcon 8s linear infinite;
+          animation: rotateIcon 8s linear infinite;
+}/*# sourceMappingURL=App.css.map */
