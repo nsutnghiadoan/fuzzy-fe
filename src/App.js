@@ -4,7 +4,7 @@ import ToolTips from './components/ToolTips/ToolTips';
 import { humidity } from './components/listData';
 import Button from '@mui/material/Button';
 import Chart from './components/Charts';
-// import
+import './assets/css/style.css';
 
 function App() {
   const [listParam, setListParam] = useState({
