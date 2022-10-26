@@ -7,13 +7,18 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { WiHumidity } from "react-icons/wi";
+import { TextField } from '@mui/material';
+import { CheckError } from './CheckError';
+
+
 
 export default function ToolTips( props ) {
     const [open, setOpen] = useState(false);
+    const [error, setError] = useState('');
     const handleTooltipOpen = () => {
         setOpen(!open);
     };
-    const [age, setAge] = useState('');
+    const [valueState, setValueState] = useState(0);
     const handleTooltipClose = () => {
         setOpen(false);
     };
@@ -32,32 +37,25 @@ export default function ToolTips( props ) {
                         disableTouchListener
                         placement="top-start"
                         title={
-                        <>
-                            <InputLabel id="demo-simple-select-label">Humidity</InputLabel>
-                            <Select
-                            value={age}
-                            onChange={(event)=>{
-                                props.parentState[props.listData.index] = event.target.value;
-                                setAge(event.target.value);
-                            }}
-                            displayEmpty
-                            label='radiation'
-                            defaultValue={props.listData.index}
-                            inputProps={{ 'aria-label': 'Without label' }}
-                            >
-                            {props.listData.data.map((value, index)=>{
-                                return (
-                                    <MenuItem key={index} value={value}>{value}</MenuItem>
-                                )
-                            })}
-                            </Select>
-                        </>
+                            <TextField 
+                                id={`input_${props.nameState}`} 
+                                label={props.nameState} 
+                                variant={'outlined'}
+                                color={'secondary'}
+                                onChange={(event)=>{
+                                    props.parentState[props.nameState] = event.target.value;
+                                    setValueState(event.target.value);
+                                    CheckError(event.target.value , props.nameState , setError);
+                                }} 
+                                onBlur={(e)=> CheckError(e.target.value , props.nameState , setError)}
+                            />
                         }
                     >
-                        <Button onClick={handleTooltipOpen}>{age == '' ? props.icon  : age}</Button>
+                        <Button onClick={handleTooltipOpen}>{valueState == '' ? props.icon  : valueState}</Button>
                     </Tooltip>
                 </div>
             </ClickAwayListener>
+            <p className='error'>{error}</p>
         </div>
     )
 }

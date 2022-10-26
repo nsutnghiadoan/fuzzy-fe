@@ -3,27 +3,27 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 const series = [
   {
-    name: 'Series 1',
+    name: 'Dry',
     data: [
-      { category: 0, value: 1 },
-      { category: 20, value: 1 },
-      { category: 30, value: 0 },
+      { valueRead: 0, value: 1 },
+      { valueRead: 20, value: 1 },
+      { valueRead: 30, value: 0 },
     ],
   },
   {
-    name: 'Series 2',
+    name: 'Medium',
     data: [
-      { category: 15, value: 0 },
-      { category: 40, value: 1 },
-      { category: 65, value: 0 },
+      { valueRead: 15, value: 0 },
+      { valueRead: 40, value: 1 },
+      { valueRead: 65, value: 0 },
     ],
   },
   {
-    name: 'Series 3',
+    name: 'Wet',
     data: [
-      { category: 50, value: 0 },
-      { category: 60, value: 1 },
-      { category: 100, value: 1 },
+      { valueRead: 50, value: 0 },
+      { valueRead: 60, value: 1 },
+      { valueRead: 100, value: 1 },
     ],
   },
 ];
@@ -35,7 +35,7 @@ export default class Example extends PureComponent {
       <ResponsiveContainer id={'chart'} width="100%" height="100%">
         <LineChart width={500} height={300}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="category" type="number" />
+          <XAxis dataKey="valueRead" type="number" />
           <YAxis dataKey="value" />
           <Tooltip />
           <Legend />

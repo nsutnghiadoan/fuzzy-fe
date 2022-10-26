@@ -1,10 +1,12 @@
 import {useState, PureComponent} from 'react';
 import { FaTemperatureLow } from 'react-icons/fa'
 import ToolTips from './components/ToolTips/ToolTips';
-import { humidity } from './components/listData';
+import { listAttribute } from './components/listData';
 import Button from '@mui/material/Button';
 import Chart from './components/Charts';
 import './assets/css/style.css';
+import { TextField } from '@mui/material';
+import { Submit } from './components/Submit/Submit';
 
 function App() {
   const [listParam, setListParam] = useState({
@@ -12,19 +14,26 @@ function App() {
     temperature : '',
     radiation : '',
   });
+
   const handleSubmit =()=> {
     
   }
   return (
     <div className="App">
-      <ToolTips 
-        icon={<FaTemperatureLow className='icon_weather' size={'30'} />} 
-        parentState={listParam}
-        listData={humidity}
-        setListParam={setListParam}
-      />
+      <div className='listTooltip'>
+        {listAttribute.map((item)=> {
+          return (
+            <ToolTips 
+              icon={item.icon} 
+              parentState={listParam}
+              setListParam={setListParam}
+              nameState={item.nameState}
+            />
+          )
+        })}
+      </div>
       <Button onClick={handleSubmit} variant="contained">Calculate</Button>
-      <Chart idChart={'moisture'} />
+      {/* <Chart idChart={'moisture'} /> */}
     </div>
   );
 }

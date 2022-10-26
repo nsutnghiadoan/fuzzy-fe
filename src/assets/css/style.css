@@ -6,4 +6,14 @@
 #chart {
   display: block;
   height: 400px !important;
+}
+
+.listTooltip {
+  display: flex;
+}
+.listTooltip .css-ja5taz-MuiTooltip-tooltip {
+  background-color: #997d7d;
+}
+.listTooltip .MuiInputLabel-formControl {
+  text-transform: capitalize;
 }/*# sourceMappingURL=style.css.map */
