@@ -1,20 +1,20 @@
 import {useState, PureComponent} from 'react';
-import { FaTemperatureLow } from 'react-icons/fa'
 import ToolTips from './components/ToolTips/ToolTips';
 import { listAttribute } from './components/listData';
 import Button from '@mui/material/Button';
-import Chart from './components/Charts';
 import './assets/css/style.css';
-import { TextField } from '@mui/material';
-import { Submit } from './components/Submit/Submit';
+import { ListRuleDefault } from './components/Rule';
+import { CheckRuleETO , CheckRuleMoisture, CheckRuleSowing } from './components/Rule/CheckRule';
+import { CombinationRule, ListRule } from './components/Rule/ListRule';
 
 function App() {
   const [listParam, setListParam] = useState({
     humidity: '',
-    temperature : '',
-    radiation : '',
+    moisture: ''
   });
-
+  const listRuleComb = CombinationRule( CheckRuleETO(12), CheckRuleMoisture(11), CheckRuleSowing(12));
+  const listRuleCalculator = ListRule(listRuleComb);
+  console.log(listRuleCalculator);
   const handleSubmit =()=> {
     
   }
@@ -24,10 +24,12 @@ function App() {
         {listAttribute.map((item)=> {
           return (
             <ToolTips 
+              key={item.nameState}
               icon={item.icon} 
               parentState={listParam}
               setListParam={setListParam}
               nameState={item.nameState}
+              requiredTitle={item.requiredTitle}
             />
           )
         })}
