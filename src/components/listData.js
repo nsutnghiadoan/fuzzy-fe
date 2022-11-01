@@ -1,5 +1,6 @@
 import { FaTemperatureLow } from 'react-icons/fa';
 import { BsMoisture } from 'react-icons/bs';
+import * as Yup from 'yup';
 
 export const listAttribute = [
     {
@@ -33,3 +34,8 @@ export const listAttribute = [
     //     requiredTitle : '(from -10 to 10)'
     // }
 ]
+
+export const SignupSchema = Yup.object().shape({
+    humidity: Yup.number().typeError("must be a number").required('Required').min(-5, "Too short"),
+    moisture : Yup.number().typeError("must be a number").required('Required').min(10, "Too short")
+});

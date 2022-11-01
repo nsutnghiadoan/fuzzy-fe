@@ -29,7 +29,6 @@ const series = [
 ];
 
 export default class Example extends PureComponent {
-
   render() {
     return (
       <ResponsiveContainer id={'chart'} width="100%" height="100%">
