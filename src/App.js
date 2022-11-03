@@ -1,4 +1,3 @@
-import { useState, PureComponent } from 'react';
 import ToolTips from './components/ToolTips/ToolTips';
 import { listAttribute, SignupSchema } from './components/listData';
 import Button from '@mui/material/Button';
@@ -6,18 +5,23 @@ import './assets/css/style.css';
 import { ListRuleDefault } from './components/Rule';
 import { CheckRuleETO, CheckRuleMoisture, CheckRuleSowing } from './components/Rule/CheckRule';
 import { CombinationRule, ListRule } from './components/Rule/ListRule';
-import Chart from './components/Charts';
 import { useFormik } from 'formik';
+import TableChart from './components/TableChart/TableChart';
 
+// van de : Khi nguoi ta nhap, nho khong vao cac khoang cua minh thi sao ????
 
 function App() {
-  const listRuleComb = CombinationRule(CheckRuleETO(19), CheckRuleMoisture(11), CheckRuleSowing(12));
-  const listRuleCalculator = ListRule(listRuleComb);
-  console.log(listRuleCalculator);
+  // const listRuleComb = CombinationRule(CheckRuleETO(19), CheckRuleMoisture(11), CheckRuleSowing(12));
+  // const listRuleCalculator = ListRule(listRuleComb);
+  // console.log(listRuleCalculator);
   const formik = useFormik({
     initialValues : {
       humidity : '',
-      moisture : ''
+      moisture : '',
+      sowing: '',
+      radiation: '',
+      windspeed : '',
+      temperature : ''
     },
     onSubmit: (value) => {
       console.log(value);
@@ -39,12 +43,14 @@ function App() {
                 handleChange={formik.handleChange}
                 valueInput = {formik.values[item.nameState]}
                 error = {formik.errors[item.nameState]}
+                label = {item.label}
               />
             )
           })}
         </div>
         <Button type='submit' variant="contained">Calculate</Button>
       </form>
+      <TableChart />
       {/* <Chart idChart={'moisture'} /> */}
     </div>
   );

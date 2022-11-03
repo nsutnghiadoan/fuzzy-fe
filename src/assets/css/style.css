@@ -5,7 +5,8 @@
 
 #chart {
   display: block;
-  height: 400px !important;
+  height: 200px !important;
+  width: 400px !important;
 }
 
 .listTooltip {
@@ -32,7 +33,4 @@
 }
 .listTooltip .css-ja5taz-MuiTooltip-tooltip {
   background-color: rgba(0, 0, 0, 0.1);
-}
-.listTooltip .MuiInputLabel-formControl {
-  text-transform: capitalize;
 }/*# sourceMappingURL=style.css.map */

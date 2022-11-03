@@ -18,8 +18,3 @@ export const ListRuleDefault = [
         speed : 1,
     }
 ]
-
-export const CalculateRule = (eto, moisture, sowing) => {
-    let count = 0;
-    
-}

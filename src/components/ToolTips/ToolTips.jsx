@@ -11,7 +11,6 @@ export default function ToolTips( props ) {
     const handleTooltipOpen = () => {
         setOpen(!open);
     };
-    const [valueState, setValueState] = useState(0);
     const handleTooltipClose = () => {
         setOpen(false);
     };
@@ -33,12 +32,13 @@ export default function ToolTips( props ) {
                         title={
                             <TextField 
                                 id={`input_${props.nameState}`} 
-                                label={props.nameState + " "+ props.requiredTitle} 
+                                label={props.label + " "+ props.requiredTitle} 
                                 variant={'outlined'}
                                 color={'secondary'}
                                 onChange={props.handleChange} 
                                 value={props.valueInput}
                                 name={props.nameState}
+                                sx = {{ width : '300px' }}
                             />
                         }
                     >
