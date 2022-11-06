@@ -1,4 +1,4 @@
-export class Duration {
+export class Speed {
     constructor(input, rule) {
       this.input = input;
       this.rule = rule;

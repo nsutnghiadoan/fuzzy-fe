@@ -32,9 +32,9 @@ function TableChart( props ) {
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">{countRule}</TableCell>
-                                <TableCell align="right"><Chart nameChart='eto' ruleValue={row.eto.rule} xValue={20} yValue={0.5} /></TableCell>
-                                <TableCell align="right"><Chart nameChart='moisture' ruleValue={row.moisture.rule} xValue={20} yValue={0.5} /></TableCell>
-                                <TableCell align="right"><Chart nameChart='sowing' ruleValue={row.sowing.rule} xValue={20} yValue={0.5} /></TableCell>
+                                <TableCell align="right"><Chart nameChart='eto' ruleValue={row.eto.rule} xValue={row.eto.input} yValue={0.5} /></TableCell>
+                                <TableCell align="right"><Chart nameChart='moisture' ruleValue={row.moisture.rule} xValue={row.moisture.input} yValue={0.5} /></TableCell>
+                                <TableCell align="right"><Chart nameChart='sowing' ruleValue={row.sowing.rule} xValue={row.sowing.input} yValue={0.5} /></TableCell>
                                 <TableCell align="right"><Chart nameChart='speed' ruleValue={row.speed.rule} xValue={20} yValue={0.5} xValue1={10} /></TableCell>
                             </TableRow>
                         )

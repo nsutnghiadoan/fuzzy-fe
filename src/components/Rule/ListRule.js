@@ -2,7 +2,7 @@ import { ListRuleDefault } from "./index";
 import {ETO} from "../../Class/ETO";
 import {Moisture} from "../../Class/Moisture";
 import {Sowing} from "../../Class/Sowing";
-import {Duration} from "../../Class/Duration";
+import {Speed} from "../../Class/Speed";
 
 export const CombinationRule = ( etoArr, moistureArr, sowingArr) =>{ 
     const listCombinationRule = []
@@ -30,7 +30,7 @@ export const ListRule = ( listCombinationRule, input ) => {
                     eto: new ETO(input.eto, ruleCal.eto),
                     moisture: new Moisture(input.moisture, ruleCal.moisture),
                     sowing: new Sowing(input.sowing, ruleCal.sowing),
-                    speed: new Duration(input.speed, ruleDefault.eto.speed )
+                    speed: new Speed(input.speed, ruleDefault.eto.speed )
                 });
             }
         })

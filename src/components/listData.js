@@ -52,8 +52,8 @@ export const SignupSchema = Yup.object().shape({
     moisture : Yup.number()
         .typeError("Please enter the number")
         .required('Please enter the moisture')
-        .min(10, "Too short")
-        .max(20, "Too big"),
+        .min(0, "Too short")
+        .max(100, "Too big"),
     temperature : Yup.number()
         .typeError("Please enter the number")
         .required('Please enter the temperature')

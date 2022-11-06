@@ -12,17 +12,17 @@ import {useEffect, useState} from "react";
 import {ETO} from "./Class/ETO";
 import {Moisture} from "./Class/Moisture";
 import {Sowing} from "./Class/Sowing";
-import {Duration} from "./Class/Duration";
+import {Speed} from "./Class/Speed";
 
-// van de : Khi nguoi ta nhap, nho khong vao cac khoang cua minh thi sao ????
 
 function App() {
   const [listRule, setListRule] = useState([{
     eto: new ETO(1, 1),
     moisture: new Moisture(1, 1),
     sowing: new Sowing(1, 1),
-    duration: new Duration(1, 1),
+    speed: new Speed(1, 1),
   }]);
+  console.log(ListRuleDefault.length);
   const [openChart, setOpenChart] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadTlt, setLoadTlt] = useState('Calculate');
@@ -82,6 +82,7 @@ function App() {
         </div>
       </form>
       { openChart && <TableChart rules={listRule} /> }
+      <TableChart rules={listRule} />
     </div>
   );
 }
