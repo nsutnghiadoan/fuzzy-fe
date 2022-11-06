@@ -16,7 +16,6 @@ function App() {
   const [listRule, setListRule] = useState([]);
   const [openChart, setOpenChart] = useState(false);
   const [loading, setLoading] = useState(false);
-  let timeLoading;
   const [loadTlt, setLoadTlt] = useState('Calculate');
   const formik = useFormik({
     initialValues : {
@@ -45,8 +44,7 @@ function App() {
         setOpenChart(true);
       }, 2000);
     }
-    return ()=> {
-      clearTimeout(timeLoading);
+    return () => {
       clearTimeout(calculated);
     }
   },[loading,loadTlt]);

@@ -47,8 +47,8 @@ export const SignupSchema = Yup.object().shape({
     humidity: Yup.number()
         .typeError("Please enter the number")
         .required('Please enter the humidity')
-        .min(-5, "Too short")
-        .max(20, "Too big"),
+        .min(0, "Too short")
+        .max(100, "Too big"),
     moisture : Yup.number()
         .typeError("Please enter the number")
         .required('Please enter the moisture')
@@ -57,21 +57,21 @@ export const SignupSchema = Yup.object().shape({
     temperature : Yup.number()
         .typeError("Please enter the number")
         .required('Please enter the temperature')
-        .min(10, "Too short")
-        .max(20, "Too big"),
+        .min(-25, "Too short")
+        .max(50, "Too big"),
     windspeed : Yup.number()
         .typeError("Please enter the number")
         .required('Please enter the wind speed')
-        .min(10, "Too short")
-        .max(20, "Too big"),
+        .min(-10, "Too short")
+        .max(10, "Too big"),
     radiation : Yup.number()
         .typeError("Please enter the number")
         .required('Please enter the radiation')
-        .min(10, "Too short")
-        .max(20, "Too big"),
+        .min(0, "Too short")
+        .max(100, "Too big"),
     sowing : Yup.number()
         .typeError("Please enter the number")
         .required('Please enter the development stage')
-        .min(10, "Too short")
-        .max(20, "Too big"),
+        .min(0, "Too short")
+        .max(140, "Too big"),
 });
