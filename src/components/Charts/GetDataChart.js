@@ -1,9 +1,8 @@
-export const getRuleChart = ( nameChart, ruleValue, xValue, yValue ) => {
+export const getRuleChart = ( nameChart, ruleValue, xValue, yValue , xValue1) => {
     const listDataChart = [];
-    const negativeNum = 0;
     switch( nameChart ) {
         case 'eto' :
-            GetETOArray(listDataChart, ruleValue , negativeNum);
+            GetETOArray(listDataChart, ruleValue );
             break;
         case 'moisture' :
             GetMoistureArray(listDataChart, ruleValue);
@@ -24,20 +23,53 @@ export const getRuleChart = ( nameChart, ruleValue, xValue, yValue ) => {
                 { valueRead: xValue, value: 0 },
                 { valueRead: xValue, value: yValue },
             ],
-        },
-        {
-            name: 'yValue',
-            data: [
-                { valueRead: 0, value: yValue },
-                { valueRead: xValue, value: yValue },
-            ],
-        },
+        }
     )
+    if( nameChart !== 'eto' ) {
+        listDataChart.push(
+            {
+                name: 'yValue',
+                data: [
+                    { valueRead: 0, value: yValue },
+                    { valueRead: xValue, value: yValue },
+                ],
+            }
+        )
+        if( nameChart === 'speed' ) {
+            listDataChart.push(
+                {
+                    name: 'yValue1',
+                    data: [
+                        { valueRead: xValue1, value: 0 },
+                        { valueRead: xValue1, value: yValue },
+                    ],
+                }
+            )
+        }
+    } else {
+        let negativeX = 0;
+        if( ruleValue == 1 ) {
+            negativeX = -10;
+        } else if ( ruleValue == 2 ) {
+            negativeX = -7;
+        } else if ( ruleValue == 3) {
+            negativeX = -1.5;
+        }
+        listDataChart.push(
+            {
+                name: 'yValue',
+                data: [
+                    { valueRead: negativeX, value: yValue },
+                    { valueRead: xValue, value: yValue },
+                ],
+            }
+        )
+    }
     return listDataChart;
 }
 
 
-function GetETOArray(listDataChart, ruleValue, negativeNum ) {
+function GetETOArray(listDataChart, ruleValue ) {
     let ruleObj = {};
     switch (ruleValue) {
         case 1 :
@@ -49,7 +81,6 @@ function GetETOArray(listDataChart, ruleValue, negativeNum ) {
                   { valueRead: -6, value: 0 },
                 ],
             }
-            negativeNum = -10;
             listDataChart.push(ruleObj);
             break;
         case 2 : 
@@ -61,7 +92,6 @@ function GetETOArray(listDataChart, ruleValue, negativeNum ) {
                   { valueRead: -1, value: 0 },
                 ],
             }
-            negativeNum = -7;
             listDataChart.push(ruleObj);
             break;
         case 3 : 
@@ -73,7 +103,6 @@ function GetETOArray(listDataChart, ruleValue, negativeNum ) {
                   { valueRead: 1.5, value: 0 },
                 ],
             }
-            negativeNum = -1.5;
             listDataChart.push(ruleObj);
             break;
         case 4 : 
