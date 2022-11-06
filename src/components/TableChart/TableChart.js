@@ -9,27 +9,7 @@ import Paper from '@mui/material/Paper';
 import ToolTips from '../ToolTips/ToolTips';
 import Chart from '../Charts';
 
-const rows = [
-    {
-        eto : 1,
-        moisture : 1,
-        sowing : 1,
-        speed : 1,
-    },
-    {
-        eto : 2,
-        moisture : 1,
-        sowing : 1,
-        speed : 3,
-    },
-    {
-        eto : 1,
-        moisture : 3,
-        sowing : 3,
-        speed : 1,
-    }
-];
-function TableChart() {
+function TableChart( props ) {
     let countRule = 0;
     return (
         <TableContainer component={Paper}>
@@ -44,7 +24,7 @@ function TableChart() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => {
+                    {props.rules.map((row) => {
                         countRule++;
                         return (
                             <TableRow
@@ -55,7 +35,7 @@ function TableChart() {
                                 <TableCell align="right"><Chart nameChart='eto' ruleValue={row.eto} xValue={20} yValue={0.5} /></TableCell>
                                 <TableCell align="right"><Chart nameChart='moisture' ruleValue={row.moisture} xValue={20} yValue={0.5} /></TableCell>
                                 <TableCell align="right"><Chart nameChart='sowing' ruleValue={row.sowing} xValue={20} yValue={0.5} /></TableCell>
-                                <TableCell align="right"><Chart nameChart='speed' ruleValue={row.speed} xValue={20} yValue={0.5} /></TableCell>
+                                <TableCell align="right"><Chart nameChart='speed' ruleValue={row.speed} xValue={20} yValue={0.5} xValue1={10} /></TableCell>
                             </TableRow>
                         )
                     })}

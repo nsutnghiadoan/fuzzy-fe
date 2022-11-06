@@ -1,19 +1,23 @@
 import ToolTips from './components/ToolTips/ToolTips';
 import { listAttribute, SignupSchema } from './components/listData';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import './assets/css/style.css';
 import { ListRuleDefault } from './components/Rule';
 import { CheckRuleETO, CheckRuleMoisture, CheckRuleSowing } from './components/Rule/CheckRule';
 import { CombinationRule, ListRule } from './components/Rule/ListRule';
 import { useFormik } from 'formik';
 import TableChart from './components/TableChart/TableChart';
+import {useEffect, useState} from "react";
 
 // van de : Khi nguoi ta nhap, nho khong vao cac khoang cua minh thi sao ????
 
 function App() {
-  // const listRuleComb = CombinationRule(CheckRuleETO(19), CheckRuleMoisture(11), CheckRuleSowing(12));
-  // const listRuleCalculator = ListRule(listRuleComb);
-  // console.log(listRuleCalculator);
+  const [listRule, setListRule] = useState([]);
+  const [openChart, setOpenChart] = useState(false);
+  const [loading, setLoading] = useState(false);
+  let timeLoading;
+  const [loadTlt, setLoadTlt] = useState('Calculate');
   const formik = useFormik({
     initialValues : {
       humidity : '',
@@ -24,10 +28,28 @@ function App() {
       temperature : ''
     },
     onSubmit: (value) => {
-      console.log(value);
+      const listRuleComb = CombinationRule(CheckRuleETO(19), CheckRuleMoisture(formik.values.moisture), CheckRuleSowing(formik.values.sowing));
+      const listRuleCalculator = ListRule(listRuleComb);
+      setListRule(listRuleCalculator);
+      setLoading(true);
+      setLoadTlt('Calculating');
     },
     validationSchema : SignupSchema
-  })
+  });
+  useEffect(()=>{
+    let calculated;
+    if( loading ) {
+      calculated = setTimeout(()=> {
+        setLoading(false);
+        setLoadTlt('Calculated');
+        setOpenChart(true);
+      }, 2000);
+    }
+    return ()=> {
+      clearTimeout(timeLoading);
+      clearTimeout(calculated);
+    }
+  },[loading,loadTlt]);
   
   return (
     <div className="App">
@@ -48,10 +70,11 @@ function App() {
             )
           })}
         </div>
-        <Button type='submit' variant="contained">Calculate</Button>
+        <div className="submit">
+          <Button type='submit' variant="contained">{loadTlt}</Button> { loading && <CircularProgress size={30} /> }
+        </div>
       </form>
-      <TableChart />
-      {/* <Chart idChart={'moisture'} /> */}
+      { openChart && <TableChart rules={listRule} /> }
     </div>
   );
 }

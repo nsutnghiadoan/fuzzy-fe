@@ -1,4 +1,4 @@
-export const getRuleChart = ( nameChart, ruleValue, xValue, yValue ) => {
+export const getRuleChart = ( nameChart, ruleValue, xValue, yValue , xValue1) => {
     const listDataChart = [];
     switch( nameChart ) {
         case 'eto' :
@@ -25,7 +25,7 @@ export const getRuleChart = ( nameChart, ruleValue, xValue, yValue ) => {
             ],
         }
     )
-    if( nameChart != 'eto' ) {
+    if( nameChart !== 'eto' ) {
         listDataChart.push(
             {
                 name: 'yValue',
@@ -35,6 +35,17 @@ export const getRuleChart = ( nameChart, ruleValue, xValue, yValue ) => {
                 ],
             }
         )
+        if( nameChart === 'speed' ) {
+            listDataChart.push(
+                {
+                    name: 'yValue1',
+                    data: [
+                        { valueRead: xValue1, value: 0 },
+                        { valueRead: xValue1, value: yValue },
+                    ],
+                }
+            )
+        }
     } else {
         let negativeX = 0;
         if( ruleValue == 1 ) {
