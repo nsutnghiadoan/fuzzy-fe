@@ -1,9 +1,14 @@
+import { ETO }  from '../../Class/ETO';
+import { Duration }  from '../../Class/Duration';
+import { Sowing }  from '../../Class/Sowing';
+import { Moisture }  from '../../Class/Moisture';
+
 export const ListRuleDefault = [
     {
-        eto: new ETO(1, 1),
-        moisture: new Moisture(1, 1),
-        sowing: new Sowing(1, 1),
-        duration: new Duration(1, 1),
+        eto: new ETO(0, 1),
+        moisture: new Moisture(0, 1),
+        sowing: new Sowing(0, 1),
+        speed: new Duration(0, 1),
     },
     {
         eto : 2,

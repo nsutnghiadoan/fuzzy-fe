@@ -1,4 +1,8 @@
 import { ListRuleDefault } from "./index";
+import {ETO} from "../../Class/ETO";
+import {Moisture} from "../../Class/Moisture";
+import {Sowing} from "../../Class/Sowing";
+import {Duration} from "../../Class/Duration";
 
 export const CombinationRule = ( etoArr, moistureArr, sowingArr) =>{ 
     const listCombinationRule = []
@@ -17,12 +21,17 @@ export const CombinationRule = ( etoArr, moistureArr, sowingArr) =>{
     return listCombinationRule;
 }
 
-export const ListRule = ( listCombinationRule )=> {
+export const ListRule = ( listCombinationRule, input ) => {
     const listRuleCalculator = []
     listCombinationRule.forEach(( ruleCal ) => {
         ListRuleDefault.forEach(( ruleDefault ) => {
-            if(ruleCal.eto == ruleDefault.eto && ruleCal.moisture == ruleDefault.moisture && ruleCal.sowing == ruleDefault.sowing) {
-            listRuleCalculator.push(ruleDefault);
+            if( ruleCal.eto == ruleDefault.eto.rule && ruleCal.moisture == ruleDefault.moisture.rule && ruleCal.sowing == ruleDefault.sowing.rule ) {
+                listRuleCalculator.push({
+                    eto: new ETO(input.eto, ruleCal.eto),
+                    moisture: new Moisture(input.moisture, ruleCal.moisture),
+                    sowing: new Sowing(input.sowing, ruleCal.sowing),
+                    speed: new Duration(input.speed, ruleDefault.eto.speed )
+                });
             }
         })
     });

@@ -9,11 +9,20 @@ import { CombinationRule, ListRule } from './components/Rule/ListRule';
 import { useFormik } from 'formik';
 import TableChart from './components/TableChart/TableChart';
 import {useEffect, useState} from "react";
+import {ETO} from "./Class/ETO";
+import {Moisture} from "./Class/Moisture";
+import {Sowing} from "./Class/Sowing";
+import {Duration} from "./Class/Duration";
 
 // van de : Khi nguoi ta nhap, nho khong vao cac khoang cua minh thi sao ????
 
 function App() {
-  const [listRule, setListRule] = useState([]);
+  const [listRule, setListRule] = useState([{
+    eto: new ETO(1, 1),
+    moisture: new Moisture(1, 1),
+    sowing: new Sowing(1, 1),
+    duration: new Duration(1, 1),
+  }]);
   const [openChart, setOpenChart] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadTlt, setLoadTlt] = useState('Calculate');

@@ -1,8 +1,8 @@
-class Moisture {
+export class Moisture {
     constructor(input, rule) {
       this.input = input;
       this.rule = rule;
-      this.value = getValue(input,rule);
+      this.value = this.getValue(input,rule);
     }
     
     getValue = (input,rule) => {

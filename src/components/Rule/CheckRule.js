@@ -1,6 +1,6 @@
-export const CheckRuleETO = (eto) => {
+export const CheckRuleETO = ( eto ) => {
   const ruleETO = []
-  if ( eto >= -10 && eto < -6 ) {
+  if ( eto >= -10 && eto <= -6 ) {
     ruleETO.push(1);
   }
   if ( eto >= -7 && eto <= -1 ) {
