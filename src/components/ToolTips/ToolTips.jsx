@@ -3,27 +3,20 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import {useState} from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import { WiHumidity } from "react-icons/wi";
 import { TextField } from '@mui/material';
-import { CheckError } from './CheckError';
-
 
 
 export default function ToolTips( props ) {
     const [open, setOpen] = useState(false);
-    const [error, setError] = useState('');
     const handleTooltipOpen = () => {
         setOpen(!open);
     };
-    const [valueState, setValueState] = useState(0);
     const handleTooltipClose = () => {
         setOpen(false);
     };
+
     return (
-        <div>
+        <div className='tooltips_item'>
             <ClickAwayListener onClickAway={handleTooltipClose}>
                 <div>
                     <Tooltip
@@ -39,23 +32,21 @@ export default function ToolTips( props ) {
                         title={
                             <TextField 
                                 id={`input_${props.nameState}`} 
-                                label={props.nameState} 
+                                label={props.label + " "+ props.requiredTitle} 
                                 variant={'outlined'}
                                 color={'secondary'}
-                                onChange={(event)=>{
-                                    props.parentState[props.nameState] = event.target.value;
-                                    setValueState(event.target.value);
-                                    CheckError(event.target.value , props.nameState , setError);
-                                }} 
-                                onBlur={(e)=> CheckError(e.target.value , props.nameState , setError)}
+                                onChange={props.handleChange} 
+                                value={props.valueInput}
+                                name={props.nameState}
+                                sx = {{ width : '300px' }}
                             />
                         }
                     >
-                        <Button onClick={handleTooltipOpen}>{valueState == '' ? props.icon  : valueState}</Button>
+                        <Button onClick={handleTooltipOpen}>{props.valueInput == '' ? props.icon  : props.valueInput}</Button>
                     </Tooltip>
                 </div>
             </ClickAwayListener>
-            <p className='error'>{error}</p>
+            <p className='error'>{props.error}</p>
         </div>
     )
 }
