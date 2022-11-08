@@ -3,26 +3,16 @@ import { listAttribute, SignupSchema } from './components/listData';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import './assets/css/style.css';
-import { ListRuleDefault } from './components/Rule';
 import { CheckRuleETO, CheckRuleMoisture, CheckRuleSowing } from './components/Rule/CheckRule';
 import { CombinationRule, ListRule } from './components/Rule/ListRule';
 import { useFormik } from 'formik';
 import TableChart from './components/TableChart/TableChart';
 import {useEffect, useState} from "react";
-import {ETO} from "./Class/ETO";
-import {Moisture} from "./Class/Moisture";
-import {Sowing} from "./Class/Sowing";
-import {Speed} from "./Class/Speed";
+import {etoCalculate} from "./components/Rule/eto";
 
 
 function App() {
-  const [listRule, setListRule] = useState([{
-    eto: new ETO(1, 1),
-    moisture: new Moisture(1, 1),
-    sowing: new Sowing(1, 1),
-    speed: new Speed(1, 1),
-  }]);
-  console.log(ListRuleDefault.length);
+  const [listRule, setListRule] = useState([]);
   const [openChart, setOpenChart] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadTlt, setLoadTlt] = useState('Calculate');
@@ -36,8 +26,13 @@ function App() {
       temperature : ''
     },
     onSubmit: (value) => {
-      const listRuleComb = CombinationRule(CheckRuleETO(19), CheckRuleMoisture(formik.values.moisture), CheckRuleSowing(formik.values.sowing));
-      const listRuleCalculator = ListRule(listRuleComb);
+      const eto = etoCalculate(formik.values.humidity, formik.values.temperature, formik.values.radiation, formik.values.windspeed);
+      const ruleETO = CheckRuleETO(eto),
+          ruleMoisture = CheckRuleMoisture(formik.values.moisture),
+          ruleSowing = CheckRuleSowing(formik.values.sowing);
+      formik.values['eto'] = eto;
+      const listRuleComb = CombinationRule( ruleETO, ruleMoisture ,ruleSowing );
+      const listRuleCalculator = ListRule(listRuleComb, formik.values);
       setListRule(listRuleCalculator);
       setLoading(true);
       setLoadTlt('Calculating');
@@ -82,7 +77,6 @@ function App() {
         </div>
       </form>
       { openChart && <TableChart rules={listRule} /> }
-      <TableChart rules={listRule} />
     </div>
   );
 }

@@ -30,7 +30,7 @@ export const ListRule = ( listCombinationRule, input ) => {
                     eto: new ETO(input.eto, ruleCal.eto),
                     moisture: new Moisture(input.moisture, ruleCal.moisture),
                     sowing: new Sowing(input.sowing, ruleCal.sowing),
-                    speed: new Speed(input.speed, ruleDefault.eto.speed )
+                    speed: new Speed(input.speed, ruleDefault.speed.rule )
                 });
             }
         })
