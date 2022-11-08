@@ -9,6 +9,7 @@ import { useFormik } from 'formik';
 import TableChart from './components/TableChart/TableChart';
 import {useEffect, useState} from "react";
 import {etoCalculate} from "./components/Rule/eto";
+import Header from "./components/Header";
 
 
 function App() {
@@ -54,7 +55,8 @@ function App() {
   },[loading,loadTlt]);
   
   return (
-    <div className="App">
+    <>
+      <Header />
       <form onSubmit={formik.handleSubmit}>
         <div className='listTooltip'>
           {listAttribute.map((item) => {
@@ -77,7 +79,7 @@ function App() {
         </div>
       </form>
       { openChart && <TableChart rules={listRule} /> }
-    </div>
+    </>
   );
 }
 
