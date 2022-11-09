@@ -17,6 +17,7 @@ export default function ToolTips( props ) {
 
     return (
         <div className='tooltips_item'>
+            <p>{ !open && props.label}</p>
             <ClickAwayListener onClickAway={handleTooltipClose}>
                 <div>
                     <Tooltip
@@ -30,19 +31,22 @@ export default function ToolTips( props ) {
                         disableTouchListener
                         placement="top-start"
                         title={
-                            <TextField 
-                                id={`input_${props.nameState}`} 
-                                label={props.label + " "+ props.requiredTitle} 
+                            <TextField
+                                id={`input_${props.nameState}`}
+                                label={props.label + " "+ props.requiredTitle}
                                 variant={'outlined'}
                                 color={'secondary'}
-                                onChange={props.handleChange} 
+                                onChange={props.handleChange}
                                 value={props.valueInput}
                                 name={props.nameState}
                                 sx = {{ width : '300px' }}
                             />
                         }
                     >
-                        <Button onClick={handleTooltipOpen}>{props.valueInput == '' ? props.icon  : props.valueInput}</Button>
+                        <div>
+                            <Button onClick={handleTooltipOpen}>{props.valueInput == '' ? props.icon  : props.valueInput}</Button>
+                            <span>{props.nameState}</span>
+                        </div>
                     </Tooltip>
                 </div>
             </ClickAwayListener>

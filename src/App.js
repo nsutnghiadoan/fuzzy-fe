@@ -33,7 +33,9 @@ function App() {
           ruleSowing = CheckRuleSowing(formik.values.sowing);
       formik.values['eto'] = eto;
       const listRuleComb = CombinationRule( ruleETO, ruleMoisture ,ruleSowing );
+      
       const listRuleCalculator = ListRule(listRuleComb, formik.values);
+      console.log(listRuleCalculator)
       setListRule(listRuleCalculator);
       setLoading(true);
       setLoadTlt('Calculating');
