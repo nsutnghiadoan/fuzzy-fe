@@ -229,9 +229,9 @@ function GetSpeedArray( listDataChart, ruleValue) {
             ruleObj = {
                 name: 'Zero',
                 data: [
-                  { valueRead: 0, value: 0 },
-                  { valueRead: 20, value: 1 },
-                  { valueRead: 40, value: 0 },
+                  { valueRead: 0.0017, value: 0 },
+                  { valueRead: 0.002, value: 1 },
+                  { valueRead: 0.0028, value: 0 },
                 ],
             }
             listDataChart.push(ruleObj);
@@ -240,9 +240,9 @@ function GetSpeedArray( listDataChart, ruleValue) {
             ruleObj = {
                 name: 'V-slow',
                 data: [
-                  { valueRead: 15, value: 0 },
-                  { valueRead: 40, value: 1 },
-                  { valueRead: 65, value: 0 },
+                  { valueRead: 0.0025, value: 0 },
+                  { valueRead: 0.0033, value: 1 },
+                  { valueRead: 0.005, value: 0 },
                 ],
             }
             listDataChart.push(ruleObj);
@@ -251,9 +251,9 @@ function GetSpeedArray( listDataChart, ruleValue) {
             ruleObj = {
                 name: 'Slow',
                 data: [
-                  { valueRead: 15, value: 0 },
-                  { valueRead: 40, value: 1 },
-                  { valueRead: 65, value: 0 },
+                  { valueRead: 0.004, value: 0 },
+                  { valueRead: 0.007, value: 1 },
+                  { valueRead: 0.02, value: 0 },
                 ],
             }
             listDataChart.push(ruleObj);
@@ -262,9 +262,9 @@ function GetSpeedArray( listDataChart, ruleValue) {
             ruleObj = {
                 name: 'Fast',
                 data: [
-                  { valueRead: 15, value: 0 },
-                  { valueRead: 40, value: 1 },
-                  { valueRead: 65, value: 0 },
+                  { valueRead: 0.01, value: 0 },
+                  { valueRead: 0.026, value: 1 },
+                  { valueRead: 0.065, value: 0 },
                 ],
             }
             listDataChart.push(ruleObj);
@@ -273,9 +273,9 @@ function GetSpeedArray( listDataChart, ruleValue) {
             ruleObj = {
                 name: 'V-fast',
                 data: [
-                  { valueRead: 15, value: 0 },
-                  { valueRead: 40, value: 1 },
-                  { valueRead: 65, value: 0 },
+                  { valueRead: 0.05, value: 0 },
+                  { valueRead: 0.09, value: 1 },
+                  { valueRead: 0.12, value: 0 },
                 ],
             }
             listDataChart.push(ruleObj);

@@ -2,63 +2,60 @@ export class Speed {
     constructor(input, rule) {
       this.input = input;
       this.rule = rule;
-      this.value = this.getValue(input,rule);
+      this.value = this.getValueCaculated(input,rule);
+      this.valuex = 0;
+      this.valuey = 0;
     }
-    
-    getValue = (input,rule) => {
+    setVal = (val) => {
+        this.input = val;
+        this.getValueCaculated(val,this.rule);
+    }
+    getValueCaculated = (input,rule) => {
         const ruleinput = []
-        if( input>= 0 && input < 0.5 && rule == 1){
+        if( rule == 1){
             var res = 0;
-            res = (2)*input;
+            var val1 = input/2;
+            var val2 = (input - 2)/(-2);
+            this.valuex = val1;
+            this.valuey = val2;
+            res = (val1+val2)/2;
             return res;
         }
-        if ( input >= 0.5 && input <= 1 && rule == 1) {
-          var res = 0;
-          res = (-2)*input + 2;
-          return res;
-        }
-        if ( input >= 0.5 && input < 3 && rule == 2) {
+        if (rule == 2) {
             var res = 0;
-            res = (2/5)*input - 1/5;
+            var val1 = (input + 1/5)/(2/5);
+            var val2 = (input - 11/5)/(-2/5);
+            this.valuex = val1;
+            this.valuey = val2;
+            res = (val1+val2)/2;
             return res;
         }
-        if ( input >= 3 && input <= 5.5 && rule == 2) {
+        if (rule == 3) {
             var res = 0;
-            res = (-2/5)*input + 11/5;
+            var val1 = (input + 2/3)/(2/9);
+            var val2 = (input - 8/3)/(-2/9);
+            this.valuex = val1;
+            this.valuey = val2;
+            res = (val1+val2)/2;
             return res;
         }
-        if ( input >= 3 && input < 7.5 && rule == 3) {
+        if (rule == 4) {
             var res = 0;
-            res = (2/9)*input - 2/3;
+            var val1 = (input + 2)/(1/5);
+            var val2 = (input - 4)/(-1/5);
+            this.valuex = val1;
+            this.valuey = val2;
+            res = (val1+val2)/2;
             return res;
         }
-        if ( input >= 7.5 && input <= 12 && rule == 3) {
+        if ( rule == 5) {
             var res = 0;
-            res = (-2/9)*input + 8/3;
+            var val1 = (input + 3)/(1/6);
+            var val2 = (input - 5)/(-1/6);
+            this.valuex = val1;
+            this.valuey = val2;
+            res = (val1+val2)/2;
             return res;
-        }
-        if ( input >= 10 && input < 15 && rule == 4) {
-            var res = 0;
-            res = (1/5)*input - 2;
-            return res;
-        }
-        if ( input >= 15 && input <= 20 && rule == 4) {
-            var res = 0;
-            res = (-1/5)*input + 4;
-            return res;
-        }
-        if ( input >= 18 && input < 24 && rule == 5) {
-            var res = 0;
-            res = (1/6)*input - 3;
-            return res;
-        }
-        if ( input >= 18 && input <= 24 && rule == 5) {
-            var res = 0;
-            res = (-1/6)*input + 5;
-            return res;
-        }
-        if ( input > 24 && rule == 5){
-            return 0;
         }
     }
    

@@ -10,6 +10,7 @@ import TableChart from './components/TableChart/TableChart';
 import {useEffect, useState} from "react";
 import {etoCalculate} from "./components/Rule/eto";
 import Header from "./components/Header";
+import { Speed } from './Class/Speed';
 
 
 function App() {
@@ -35,7 +36,14 @@ function App() {
       const listRuleComb = CombinationRule( ruleETO, ruleMoisture ,ruleSowing );
       
       const listRuleCalculator = ListRule(listRuleComb, formik.values);
-      console.log(listRuleCalculator)
+      var result = 0;
+      listRuleCalculator.forEach(( rule ) => {
+        var zValue = rule.eto.value;
+        if (rule.moisture.value < zValue) { zValue = rule.moisture.value; }
+        if (rule.sowing.value < zValue) { zValue = rule.sowing.value; }
+        rule.speed.setVal(zValue);
+        result += rule.speed.value;
+      });
       setListRule(listRuleCalculator);
       setLoading(true);
       setLoadTlt('Calculating');
