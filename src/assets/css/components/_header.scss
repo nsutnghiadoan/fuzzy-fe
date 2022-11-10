@@ -2,7 +2,17 @@
     //margin: 0 20px 0;
 }
 .MuiBox-root.css-1qte3rd {
-    display: flex;
-    justify-content: space-between;
-    width: 500px;
+    width: 850px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px;
+    margin-bottom: 50px;
+    .MuiCardContent-root {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .MuiAvatar-root {
+            margin-bottom: 30px;
+        }
+    }
 }
