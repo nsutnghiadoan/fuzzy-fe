@@ -103,3 +103,60 @@ export const getNameRuleETO = (rule) => {
     }
     return nameRule;
 }
+
+export const getNameRuleMoisture = (rule) => {
+    let nameRule;
+    switch (rule) {
+        case 1 :
+            nameRule = 'Dry';
+            break;
+        case 2 :
+            nameRule = 'Medium';
+            break;
+        case 3:
+            nameRule = 'Wet';
+            break;
+    }
+    return nameRule;
+}
+
+export const getNameRuleSowing = (rule) => {
+    let nameRule;
+    switch (rule) {
+        case 1 :
+            nameRule = 'Initial-stage';
+            break;
+        case 2 :
+            nameRule = 'Initial-stage';
+            break;
+        case 3:
+            nameRule = 'Mid-stage';
+            break;
+        case 4 :
+            nameRule = 'Late-stage';
+            break;
+    }
+    return nameRule;
+}
+
+export const getNameRuleSpeed = (rule) => {
+    let nameRule;
+    switch (rule) {
+        case 1 :
+            nameRule = 'Zero';
+            break;
+        case 2 :
+            nameRule = 'V-slow';
+            break;
+        case 3:
+            nameRule = 'Slow';
+            break;
+        case 4 :
+            nameRule = 'Fast';
+            break;
+        case 5 :
+            nameRule = 'V-fast';
+            break;
+    }
+    return nameRule;
+}

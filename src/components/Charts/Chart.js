@@ -4,10 +4,11 @@ import {etoData, getRuleChart, moistureData, speedData} from './GetDataChart';
 
 function Chart( props ) {
 
-  // const series = getRuleChart(props.nameChart, props.ruleValue, props.xValue, props.yValue, props.xValue1);
-  const series = speedData;
+  const series = props.arrRule ? props.arrRule : getRuleChart(props.nameChart, props.ruleValue, props.xValue, props.yValue, props.xValue1);
+  // const series = speedData;
+  
   return (
-    <ResponsiveContainer id={'chart'} width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="100%">
       <LineChart width={500} height={300}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="valueRead" type="number" />

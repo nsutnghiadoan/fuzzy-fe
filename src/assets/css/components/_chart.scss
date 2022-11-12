@@ -2,8 +2,10 @@
     display: block;
     width: 400px;
 }
-#chart {
-    display: block;
-    height: 200px !important;
-    width: 400px !important;
+.MuiTable-root {
+    .recharts-responsive-container {
+        display: block;
+        height: 200px !important;
+        width: 400px !important;
+    }
 }

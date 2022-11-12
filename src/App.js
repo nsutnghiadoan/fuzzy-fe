@@ -1,5 +1,12 @@
 import ToolTips from './components/ToolTips/ToolTips';
-import {listAttribute, SignupSchema, getNameRuleETO} from './components/listData';
+import {
+    listAttribute,
+    SignupSchema,
+    getNameRuleETO,
+    getNameRuleSowing,
+    getNameRuleMoisture,
+    getNameRuleSpeed
+} from './components/listData';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import './assets/css/style.css';
@@ -98,9 +105,14 @@ function App() {
                     </form>
                 </CardContent>
             </Card>
+            {openChart && <h2>List Rule for input is : </h2>}
             {openChart ? listRule.map((rule)=>{
                 return(
-                    <h3>{getNameRuleETO(rule.eto.value)}</h3>
+                    <h3>⚫ IF ( Moisture is {getNameRuleMoisture(rule.moisture.rule)} ) AND
+                        ( ETO is {getNameRuleETO(rule.eto.rule)} ) AND
+                        ( Development stage is {getNameRuleSowing(rule.sowing.rule)} ) THEN
+                        ( Speed is {getNameRuleSpeed(rule.speed.rule)} )
+                        </h3>
                 )
             }) : ''}
             {openChart && <TableChart rules={listRule}/>}
