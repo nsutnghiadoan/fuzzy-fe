@@ -43,7 +43,7 @@ export const getRuleChart = (nameChart, ruleValue, xValue, yValue, xValue1) => {
                         {valueRead: xValue1, value: 0},
                         {valueRead: xValue1, value: yValue},
                     ],
-                }
+                },
             )
         }
     } else {
@@ -229,9 +229,9 @@ function GetSpeedArray(listDataChart, ruleValue) {
             ruleObj = {
                 name: 'Zero',
                 data: [
-                    {valueRead: 0.0017, value: 0},
-                    {valueRead: 0.002, value: 1},
-                    {valueRead: 0.0028, value: 0},
+                    {valueRead: 0.001, value: 0},
+                    {valueRead: 0.0025, value: 1},
+                    {valueRead: 0.004, value: 0},
                 ],
             }
             listDataChart.push(ruleObj);
@@ -240,9 +240,9 @@ function GetSpeedArray(listDataChart, ruleValue) {
             ruleObj = {
                 name: 'V-slow',
                 data: [
-                    {valueRead: 0.0025, value: 0},
-                    {valueRead: 0.0033, value: 1},
-                    {valueRead: 0.005, value: 0},
+                    {valueRead: 0.003, value: 0},
+                    {valueRead: 0.005, value: 1},
+                    {valueRead: 0.007, value: 0},
                 ],
             }
             listDataChart.push(ruleObj);
@@ -251,9 +251,9 @@ function GetSpeedArray(listDataChart, ruleValue) {
             ruleObj = {
                 name: 'Slow',
                 data: [
-                    {valueRead: 0.004, value: 0},
-                    {valueRead: 0.007, value: 1},
-                    {valueRead: 0.02, value: 0},
+                    {valueRead: 0.006, value: 0},
+                    {valueRead: 0.01, value: 1},
+                    {valueRead: 0.014, value: 0},
                 ],
             }
             listDataChart.push(ruleObj);
@@ -262,9 +262,9 @@ function GetSpeedArray(listDataChart, ruleValue) {
             ruleObj = {
                 name: 'Fast',
                 data: [
-                    {valueRead: 0.01, value: 0},
-                    {valueRead: 0.026, value: 1},
-                    {valueRead: 0.065, value: 0},
+                    {valueRead: 0.0125, value: 0},
+                    {valueRead: 0.04, value: 1},
+                    {valueRead: 0.0675, value: 0},
                 ],
             }
             listDataChart.push(ruleObj);
@@ -273,9 +273,9 @@ function GetSpeedArray(listDataChart, ruleValue) {
             ruleObj = {
                 name: 'V-fast',
                 data: [
-                    {valueRead: 0.05, value: 0},
-                    {valueRead: 0.09, value: 1},
-                    {valueRead: 0.12, value: 0},
+                    {valueRead: 0.052, value: 0},
+                    {valueRead: 0.085, value: 1},
+                    {valueRead: 0.118, value: 0},
                 ],
             }
             listDataChart.push(ruleObj);
@@ -391,41 +391,41 @@ export const speedData = [
     {
         name: 'Zero',
         data: [
-            {valueRead: 0.0017, value: 0},
-            {valueRead: 0.0028, value: 1},
-            {valueRead: 0.005, value: 0},
+            {valueRead: 0.001, value: 0},
+            {valueRead: 0.0025, value: 1},
+            {valueRead: 0.004, value: 0},
         ],
     },
     {
         name: 'V-slow',
         data: [
-            {valueRead: 0.0033, value: 0},
+            {valueRead: 0.003, value: 0},
             {valueRead: 0.005, value: 1},
-            {valueRead: 0.01, value: 0},
+            {valueRead: 0.007, value: 0},
         ],
     },
     {
         name: 'Slow',
         data: [
-            {valueRead: 0.008, value: 0},
-            {valueRead: 0.017, value: 1},
-            {valueRead: 0.022, value: 0},
+            {valueRead: 0.006, value: 0},
+            {valueRead: 0.01, value: 1},
+            {valueRead: 0.014, value: 0},
         ],
     },
     {
         name: 'Fast',
         data: [
-            {valueRead: 0.0195, value: 0},
-            {valueRead: 0.027, value: 1},
-            {valueRead: 0.05, value: 0},
+            {valueRead: 0.0125, value: 0},
+            {valueRead: 0.04, value: 1},
+            {valueRead: 0.0675, value: 0},
         ],
     },
     {
         name: 'V-fast',
         data: [
-            {valueRead: 0.043, value: 0},
-            {valueRead: 0.07, value: 1},
-            {valueRead: 0.1, value: 0},
+            {valueRead: 0.052, value: 0},
+            {valueRead: 0.085, value: 1},
+            {valueRead: 0.118, value: 0},
         ],
     }
 
