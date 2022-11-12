@@ -43,7 +43,7 @@ export class Sowing {
             res = (1/20)*input - 5;
             return res;
         }
-        if ( input >= 120 && input < 140 && rule == 4) {
+        if ( input >= 120 && input <= 140 && rule == 4) {
             var res = 0;
             res = (-1/20)*input + 7;
             return res;
