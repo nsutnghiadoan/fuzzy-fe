@@ -6,7 +6,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import ToolTips from '../ToolTips/ToolTips';
 import Chart from '../Charts';
 
 function TableChart( props ) {
@@ -35,7 +34,7 @@ function TableChart( props ) {
                                 <TableCell align="right"><Chart nameChart='eto' ruleValue={row.eto.rule} xValue={row.eto.input} yValue={row.eto.value} /></TableCell>
                                 <TableCell align="right"><Chart nameChart='moisture' ruleValue={row.moisture.rule} xValue={row.moisture.input} yValue={row.moisture.value} /></TableCell>
                                 <TableCell align="right"><Chart nameChart='sowing' ruleValue={row.sowing.rule} xValue={row.sowing.input} yValue={row.sowing.value} /></TableCell>
-                                <TableCell align="right"><Chart nameChart='speed' ruleValue={row.speed.rule} yValue={0.5} xValue={20} xValue1={10} /></TableCell>
+                                <TableCell align="right"><Chart nameChart='speed' ruleValue={row.speed.rule} yValue={row.speed.input} xValue={0.05} xValue1={0.025} /></TableCell>
                             </TableRow>
                         )
                     })}

@@ -1,8 +1,38 @@
-.MuiCard-root {
-    //margin: 0 20px 0;
-}
-.MuiBox-root.css-1qte3rd {
+#header {
+    margin-bottom: 50px;
     display: flex;
-    justify-content: space-between;
-    width: 500px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    h1 {
+        width: 100%;
+        text-align: center;
+    }
+}
+.css-ndyrf2 {
+    width: 900px;
+    &.card_avatar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 200px;
+        margin-bottom: 50px;
+        .MuiCardContent-root {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .MuiAvatar-root {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+
+.MuiTypography-root.MuiTypography-body1.css-ahj2mt-MuiTypography-root {
+    overflow-y: scroll;
+    height: 500px;
+}
+.recharts-responsive-container {
+    width: 700px !important;
+    height: 400px !important;
+    margin-bottom: 60px;
 }

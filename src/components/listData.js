@@ -9,37 +9,43 @@ export const listAttribute = [
         nameState : 'temperature', 
         icon : <FaTemperatureLow size={'50'} />,
         requiredTitle : '(from -25 to 50)(°C)',
-        label : 'Temperature'
+        label : 'Temperature',
+        unit: '(°C)'
     },
     {
         nameState : 'moisture',
         icon : <BsMoisture size={'50'} />,
-        requiredTitle : '(from 0 to 100)',
-        label : 'Moisture'
+        requiredTitle : '(from 0 to 100)(%)',
+        label : 'Moisture',
+        unit: '(%)'
     },
     {
         nameState : 'humidity',
         icon : <WiHumidity size={'80'} />,
         requiredTitle : '(from 0 to 100)(%)',
-        label : 'Humidity'
+        label : 'Humidity',
+        unit: '(%)'
     },
     {
         nameState : 'windspeed', 
         icon : <WiCloudyWindy size={'70'} />,
         requiredTitle : '(from -10 to 10)(mph)',
-        label : 'Wind Speed'
+        label : 'Wind Speed',
+        unit: '(mph)'
     },
     {
         nameState : 'radiation',
         icon : <FaRadiation size={'50'} />,
         requiredTitle : '(from 0 to 100)(%)',
-        label : 'Radiation'
+        label : 'Radiation',
+        unit: '(%)'
     },
     {
         nameState : 'sowing',
         icon : <GiMatterStates size={'50'} />,
         requiredTitle : '(from 0 to 140)(days)',
-        label : 'Development Stage'
+        label : 'Development Stage',
+        unit: 'days'
     }
 ]
 
@@ -75,3 +81,82 @@ export const SignupSchema = Yup.object().shape({
         .min(0, "Too short")
         .max(140, "Too big"),
 });
+
+export const getNameRuleETO = (rule) => {
+    let nameRule;
+    switch (rule) {
+        case 1 :
+            nameRule = 'LN';
+            break;
+        case 2 :
+            nameRule = 'SN';
+            break;
+        case 3:
+            nameRule = 'EQ';
+            break;
+        case 4 :
+            nameRule = 'SP';
+            break;
+        case 5:
+            nameRule = 'LP';
+            break;
+    }
+    return nameRule;
+}
+
+export const getNameRuleMoisture = (rule) => {
+    let nameRule;
+    switch (rule) {
+        case 1 :
+            nameRule = 'Dry';
+            break;
+        case 2 :
+            nameRule = 'Medium';
+            break;
+        case 3:
+            nameRule = 'Wet';
+            break;
+    }
+    return nameRule;
+}
+
+export const getNameRuleSowing = (rule) => {
+    let nameRule;
+    switch (rule) {
+        case 1 :
+            nameRule = 'Initial-stage';
+            break;
+        case 2 :
+            nameRule = 'Initial-stage';
+            break;
+        case 3:
+            nameRule = 'Mid-stage';
+            break;
+        case 4 :
+            nameRule = 'Late-stage';
+            break;
+    }
+    return nameRule;
+}
+
+export const getNameRuleSpeed = (rule) => {
+    let nameRule;
+    switch (rule) {
+        case 1 :
+            nameRule = 'Zero';
+            break;
+        case 2 :
+            nameRule = 'V-slow';
+            break;
+        case 3:
+            nameRule = 'Slow';
+            break;
+        case 4 :
+            nameRule = 'Fast';
+            break;
+        case 5 :
+            nameRule = 'V-fast';
+            break;
+    }
+    return nameRule;
+}

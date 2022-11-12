@@ -6,9 +6,9 @@ export class Speed {
       this.valuex = 0;
       this.valuey = 0;
     }
-    setVal = (val) =>{
+    setVal = (val) => {
         this.input = val;
-        this.value = this.getValueCaculated(val,this.rule);
+        this.getValueCaculated(val,this.rule);
     }
     getValueCaculated = (input,rule) => {
         const ruleinput = []
