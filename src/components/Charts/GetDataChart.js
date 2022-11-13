@@ -391,8 +391,8 @@ export const speedData = [
     {
         name: 'Zero',
         data: [
-            {valueRead: 0.001, value: 0},
-            {valueRead: 0.0025, value: 1},
+            {valueRead: 0, value: 0},
+            {valueRead: 0.002, value: 1},
             {valueRead: 0.004, value: 0},
         ],
     },

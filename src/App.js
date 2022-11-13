@@ -105,7 +105,7 @@ function App() {
                     </form>
                 </CardContent>
             </Card>
-            {openChart && <h2>List Rule for input is : </h2>}
+            {openChart && <h2>List Rule for this input is : </h2>}
             {openChart ? listRule.map((rule)=>{
                 return(
                     <h3>⚫ IF ( Moisture is {getNameRuleMoisture(rule.moisture.rule)} ) AND
