@@ -14,8 +14,8 @@ export class Speed {
         const ruleinput = []
         if( rule == 1){
             var res = 0;
-            var val1 = (input+17/183)/(10000/163);
-            var val2 = (input - 7/2)/(-125);
+            var val1 = (input+2/3)/(2000/3);
+            var val2 = (input - 8/3)/(-2000/3);
             this.valuex = val1;
             this.valuey = val2;
             res = (val1+val2)/2;
@@ -23,8 +23,8 @@ export class Speed {
         }
         if (rule == 2) {
             var res = 0;
-            var val1 = (input+25/8)/(1250);
-            var val2 = (input - 50/17)/(-10000/17);
+            var val1 = (input+3/2)/(500);
+            var val2 = (input - 7/2)/(-500);
             this.valuex = val1;
             this.valuey = val2;
             res = (val1+val2)/2;
@@ -32,8 +32,8 @@ export class Speed {
         }
         if (rule == 3) {
             var res = 0;
-            var val1 = (input+4/3)/(1000/3);
-            var val2 = (input - 20/13)/(-10000/13);
+            var val1 = (input+3/2)/(250);
+            var val2 = (input - 7/2)/(-250);
             this.valuex = val1;
             this.valuey = val2;
             res = (val1+val2)/2;
@@ -41,8 +41,8 @@ export class Speed {
         }
         if (rule == 4) {
             var res = 0;
-            var val1 = (input+5/8)/(125/2);
-            var val2 = (input - 5/3)/(-1000/39);
+            var val1 = (input+5/11)/(400/11);
+            var val2 = (input - 27/11)/(-400/11);
             this.valuex = val1;
             this.valuey = val2;
             res = (val1+val2)/2;
@@ -50,8 +50,8 @@ export class Speed {
         }
         if ( rule == 5) {
             var res = 0;
-            var val1 = (input + 5/4)/(25);
-            var val2 = (input - 4)/(-100/3);
+            var val1 = (input + 52/33)/(1000/33);
+            var val2 = (input - 118/33)/(-1000/33);
             this.valuex = val1;
             this.valuey = val2;
             res = (val1+val2)/2;
