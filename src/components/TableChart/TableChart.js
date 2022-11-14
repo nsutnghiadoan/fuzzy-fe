@@ -9,7 +9,6 @@ import Paper from '@mui/material/Paper';
 import Chart from '../Charts';
 
 function TableChart( props ) {
-    let countRule = 0;
     return (
         <TableContainer component={Paper}>
             <Table aria-label="caption table">
@@ -23,14 +22,13 @@ function TableChart( props ) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.rules.map((row) => {
-                        countRule++;
+                    {props.rules.map((row, index) => {
                         return (
                             <TableRow
-                                key={countRule}
+                                key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">{countRule}</TableCell>
+                                <TableCell component="th" scope="row">{index + 1}</TableCell>
                                 <TableCell align="right"><Chart nameChart='eto' ruleValue={row.eto.rule} xValue={row.eto.input} yValue={row.eto.value} /></TableCell>
                                 <TableCell align="right"><Chart nameChart='moisture' ruleValue={row.moisture.rule} xValue={row.moisture.input} yValue={row.moisture.value} /></TableCell>
                                 <TableCell align="right"><Chart nameChart='sowing' ruleValue={row.sowing.rule} xValue={row.sowing.input} yValue={row.sowing.value} /></TableCell>

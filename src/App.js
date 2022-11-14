@@ -20,12 +20,12 @@ import Header from "./components/Header";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
-
 function App() {
     const [listRule, setListRule] = useState([]);
     const [openChart, setOpenChart] = useState(false);
     const [loading, setLoading] = useState(false);
     const [loadTlt, setLoadTlt] = useState('Calculate');
+    let maxSpeed;
     const formik = useFormik({
         initialValues: {
             humidity: '',
@@ -52,11 +52,14 @@ function App() {
                 if (rule.sowing.value < zValue) {
                     zValue = rule.sowing.value;
                 }
+                if(result < zValue) {
+                    maxSpeed = rule;
+                    result = zValue;
+                };
                 rule.speed.setVal(zValue);
-                result += rule.speed.value;
             });
-            setListRule(listRuleCalculator);
             setLoading(true);
+            setListRule(listRuleCalculator);
             setLoadTlt('Calculating');
         },
         validationSchema: SignupSchema
@@ -78,7 +81,7 @@ function App() {
     return (
         <>
             <Header/>
-            <Card>
+            <Card className={'main_content'}>
                 <CardContent>
                     <form onSubmit={formik.handleSubmit}>
                         <div className='listTooltip'>
@@ -105,17 +108,22 @@ function App() {
                     </form>
                 </CardContent>
             </Card>
-            {openChart && <h2>List Rule for this input is : </h2>}
-            {openChart ? listRule.map((rule)=>{
-                return(
-                    <h3>⚫ IF ( Moisture is {getNameRuleMoisture(rule.moisture.rule)} ) AND
-                        ( ETO is {getNameRuleETO(rule.eto.rule)} ) AND
-                        ( Development stage is {getNameRuleSowing(rule.sowing.rule)} ) THEN
-                        ( Speed is {getNameRuleSpeed(rule.speed.rule)} )
-                        </h3>
-                )
-            }) : ''}
             {openChart && <TableChart rules={listRule}/>}
+            <div className="list_rule">
+                {openChart && <h2>List Rule </h2>}
+                {openChart ? listRule.map((rule, index)=>{
+                    return(
+                        <>
+                            <h3 key={index}>( Moisture is {getNameRuleMoisture(rule.moisture.rule)} ) AND
+                                ( ETO is {getNameRuleETO(rule.eto.rule)} ) AND
+                                ( Development stage is {getNameRuleSowing(rule.sowing.rule)} ) THEN
+                                ( Speed is {getNameRuleSpeed(rule.speed.rule)} )
+                            </h3>
+                            <hr />
+                        </>
+                    )
+                }) : ''}
+            </div>
         </>
     );
 }

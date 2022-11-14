@@ -317,7 +317,7 @@ export const etoData = [
         ],
     }
     , {
-        name: 'Wet',
+        name: 'LP',
         data: [
             {valueRead: 6, value: 0},
             {valueRead: 7.5, value: 1},

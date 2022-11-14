@@ -13,7 +13,7 @@ export class Sowing {
             res = (1/10)*input;
             return res;
         }
-        if( input >= 10 && input < 20 && rule == 1){
+        if( input >= 10 && input <= 20 && rule == 1){
             var res = 0;
             res = (-1/10)*input + 2;
             return res;

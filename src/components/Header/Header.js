@@ -9,7 +9,6 @@ import Avatar from '@mui/material/Avatar';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -36,7 +35,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                    {children}
                 </Box>
             )}
         </div>
@@ -64,7 +63,6 @@ export default function Header( props ) {
     const [open, setOpen] = useState(false);
     const [openData, setOpenData] = useState(false);
     const [value, setValue] = useState(0);
-    let countRule = 0;
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -74,8 +72,8 @@ export default function Header( props ) {
     const handleCloseData = () => setOpenData(false);
     return (
         <header id='header'>
-            <h1>Fuzzy Logic based Automatic Plant Watering System - Group 7</h1>
-            <Button onClick={handleOpen}>See group members</Button>
+            <h1>Automatic Plant Watering System - Group 7</h1>
+            <Button onClick={handleOpen}>Group members</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -121,7 +119,7 @@ export default function Header( props ) {
                     </Card>
                 </Box>
             </Modal>
-            <Button onClick={handleOpenData}>See List Rules and Membership Functions</Button>
+            <Button onClick={handleOpenData}>List Rules Default</Button>
             <Modal
                 open={openData}
                 onClose={handleCloseData}
@@ -148,14 +146,13 @@ export default function Header( props ) {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {ListRuleDefault.map((row) => {
-                                        countRule++;
+                                    {ListRuleDefault.map((row, index) => {
                                         return (
                                             <TableRow
-                                                key={countRule}
+                                                key={index}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                             >
-                                                <TableCell component="th" scope="row">{countRule}</TableCell>
+                                                <TableCell component="th" scope="row">{index + 1}</TableCell>
                                                 <TableCell align="right">{getNameRuleETO(row.eto.rule)}</TableCell>
                                                 <TableCell align="right">{getNameRuleMoisture(row.moisture.rule)}</TableCell>
                                                 <TableCell align="right">{getNameRuleSowing(row.sowing.rule)}</TableCell>
