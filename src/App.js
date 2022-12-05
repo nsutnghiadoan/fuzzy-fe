@@ -25,7 +25,9 @@ function App() {
     const [openChart, setOpenChart] = useState(false);
     const [loading, setLoading] = useState(false);
     const [loadTlt, setLoadTlt] = useState('Calculate');
+    const [speedResult, setSpeedResult] = useState(0);
     let maxSpeed;
+    const [result, setResult] = useState();
     const formik = useFormik({
         initialValues: {
             humidity: '',
@@ -58,6 +60,8 @@ function App() {
                 };
                 rule.speed.setVal(zValue);
             });
+            setResult(maxSpeed);
+            setSpeedResult((maxSpeed.speed.valuex + maxSpeed.speed.valuey)/2);
             setLoading(true);
             setListRule(listRuleCalculator);
             setLoadTlt('Calculating');
@@ -124,6 +128,9 @@ function App() {
                     )
                 }) : ''}
             </div>
+            <h2>{openChart ? "Maximum speed at y = " + result.speed.input : ''}</h2>
+            <h2>{openChart ? "Speed = (" + result.speed.valuex + ' + ' + result.speed.valuey +') / 2' : ''}</h2>
+            <h2>{openChart ? "=> Speed is " + speedResult + " (m³/s)" : ''}</h2>
         </>
     );
 }

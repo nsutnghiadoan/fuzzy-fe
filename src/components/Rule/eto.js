@@ -20,7 +20,7 @@ function soilHeatFluxDensity(netRadition) { // G
 }
 
 function psychometricConstant(temperature) { // gamma
-    return 1.005 * 101.3 / (0.622 * 2.51 - 0.00236 * temperature)
+    return 1.005 * 101.3 / (0.622 * (2.51 - 0.00236 * temperature ))
 }
 
 function windSpeedMPHToMS(windSpeedMPH) {
